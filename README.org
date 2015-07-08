@@ -1,0 +1,49 @@
+#+PROPERTY: header-args:emacs-lisp :results silent
+* Installation
+  
+  Requires the package =org-plus-contrib= beforehand.
+
+  #+BEGIN_SRC emacs-lisp :tangle "../init.el" :exports code :results silent
+    (require 'package)
+    (package-initialize)
+
+    (require 'ob-tangle)
+    (org-babel-load-file "~/.emacs.d/acretzu-emacs/README.org")
+  #+END_SRC
+
+* Local Customizations
+
+  #+BEGIN_SRC emacs-lisp
+    (setq custom-file "~/.emacs.d/custom.el")
+    (if (file-exists-p custom-file)
+        (load-file custom-file))
+  #+END_SRC
+
+* Small Settings
+** Package Archives
+
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+     (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+   #+END_SRC
+
+* Org-mode
+** Babel
+   #+BEGIN_SRC emacs-lisp
+     (org-babel-do-load-languages
+      'org-babel-load-languages
+      '((emacs-lisp . t)
+        (sh . t)
+        (perl . t)))
+   #+END_SRC
+
+* Style
+
+  #+BEGIN_SRC emacs-lisp
+    (setq visible-bell t)
+    (tool-bar-mode -1)
+    (menu-bar-mode -1)
+    (scroll-bar-mode -1)
+  #+END_SRC
+
+
